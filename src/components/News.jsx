@@ -4,7 +4,9 @@ var News = React.createClass({
 	render: function(){
 		return(
 			<div>
-				<h2>This is where the news go</h2>
+				<h2>
+					This is the news
+				</h2>
 			</div>
 		);
 	}

@@ -26153,14 +26153,15 @@ var Routes = React.createElement(
 	React.createElement(
 		Route,
 		{ path: '/', component: Header },
-		React.createElement(Route, { path: '/news', component: News }),
-		React.createElement(Route, { path: '/photos', component: Photos })
+		React.createElement(Route, { path: 'news', component: News }),
+		React.createElement(Route, { path: 'photos', component: Photos })
 	)
 );
 module.exports = Routes;
 
 },{"./components/Header.jsx":236,"./components/News.jsx":237,"./components/Photos.jsx":238,"react":233,"react-router":31,"react-router/node_modules/history/lib/createHashHistory":48}],236:[function(require,module,exports){
 var React = require('react');
+var Link = require('react-router').Link;
 
 var Header = React.createClass({
 	displayName: 'Header',
@@ -26168,15 +26169,20 @@ var Header = React.createClass({
 	render: function () {
 
 		var divStyle = {
+			background: 'blue',
+			color: 'white'
+		};
+		var linkStyle = {
 			textAlign: 'right',
-			paddingRight: '10'
+			paddingRight: '150',
+			color: 'white'
 		};
 		var displayStyle = {
 			listStyleType: 'none'
 		};
 		return React.createElement(
 			'div',
-			null,
+			{ style: divStyle },
 			React.createElement(
 				'div',
 				{ className: 'col-md-12 col-md-offset-2' },
@@ -26197,17 +26203,21 @@ var Header = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ style: displayStyle, className: 'links' },
+				{ style: linkStyle },
 				React.createElement(
 					'ul',
-					{ style: divStyle },
+					{ style: displayStyle },
 					React.createElement(
 						'li',
 						null,
 						React.createElement(
 							'h2',
 							null,
-							'NEWS'
+							React.createElement(
+								Link,
+								{ to: 'news' },
+								'NEWS'
+							)
 						)
 					),
 					React.createElement(
@@ -26216,18 +26226,26 @@ var Header = React.createClass({
 						React.createElement(
 							'h2',
 							null,
-							'PHOTOS'
+							React.createElement(
+								Link,
+								{ to: 'photos' },
+								'PHOTOS'
+							)
 						)
 					)
 				)
 			),
-			this.props.children
+			React.createElement(
+				'div',
+				null,
+				this.props.children
+			)
 		);
 	}
 });
 module.exports = Header;
 
-},{"react":233}],237:[function(require,module,exports){
+},{"react":233,"react-router":31}],237:[function(require,module,exports){
 var React = require('react');
 
 var News = React.createClass({
@@ -26240,7 +26258,7 @@ var News = React.createClass({
 			React.createElement(
 				'h2',
 				null,
-				'This is where the news go'
+				'This is the news'
 			)
 		);
 	}
@@ -26271,7 +26289,9 @@ module.exports = Photos;
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Routes = require('./Routes.jsx');
+var Header = require('./components/News.jsx');
 
 ReactDOM.render(Routes, document.getElementById('switch'));
+ReactDOM.render(React.createElement(News, { title: 'Breaking News', subtitle: 'There have been a fire' }), document.getElementById('news'));
 
-},{"./Routes.jsx":235,"react":233,"react-dom":1}]},{},[239]);
+},{"./Routes.jsx":235,"./components/News.jsx":237,"react":233,"react-dom":1}]},{},[239]);

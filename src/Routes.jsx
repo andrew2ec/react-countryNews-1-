@@ -16,8 +16,8 @@ var Photos = require('./components/Photos.jsx');
 var Routes = (
 	<Router history={appHistory}>
 		<Route path="/" component={Header}>
-			<Route path="/news" component={News} />
-			<Route path="/photos" component={Photos} />
+			<Route path="news" component={News} />
+			<Route path="photos" component={Photos} />
 		</Route>
 	</Router>
 );
