@@ -26166,12 +26166,20 @@ var Header = React.createClass({
 	displayName: 'Header',
 
 	render: function () {
+
+		var divStyle = {
+			textAlign: 'right',
+			paddingRight: '10'
+		};
+		var displayStyle = {
+			listStyleType: 'none'
+		};
 		return React.createElement(
 			'div',
 			null,
 			React.createElement(
 				'div',
-				null,
+				{ className: 'col-md-12 col-md-offset-2' },
 				React.createElement(
 					'h1',
 					null,
@@ -26180,7 +26188,7 @@ var Header = React.createClass({
 			),
 			React.createElement(
 				'div',
-				null,
+				{ className: 'col-md-12 col-md-offset-2' },
 				React.createElement(
 					'h2',
 					null,
@@ -26189,16 +26197,28 @@ var Header = React.createClass({
 			),
 			React.createElement(
 				'div',
-				null,
+				{ style: displayStyle, className: 'links' },
 				React.createElement(
-					'h2',
-					null,
-					'NEWS'
-				),
-				React.createElement(
-					'h2',
-					null,
-					'PHOTOS'
+					'ul',
+					{ style: divStyle },
+					React.createElement(
+						'li',
+						null,
+						React.createElement(
+							'h2',
+							null,
+							'NEWS'
+						)
+					),
+					React.createElement(
+						'li',
+						null,
+						React.createElement(
+							'h2',
+							null,
+							'PHOTOS'
+						)
+					)
 				)
 			),
 			this.props.children
